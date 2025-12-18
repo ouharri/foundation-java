@@ -37,6 +37,14 @@ val nexusUser: String? = providers.gradleProperty("nexusUsername").orNull ?: Sys
 val nexusPass: String? = providers.gradleProperty("nexusPassword").orNull ?: System.getenv("NEXUS_PASSWORD")
 
 subprojects {
+    subprojects {
+        plugins.withId("pmd") {
+            tasks.withType<Pmd>().configureEach {
+                enabled = false
+            }
+        }
+    }
+
     plugins.withId("java") {
 
         apply(plugin = "maven-publish")

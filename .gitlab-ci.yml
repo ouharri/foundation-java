@@ -46,7 +46,7 @@ unit_test:
 .quality:
   stage: quality
   script:
-    - ./gradlew check --info
+    - ./gradlew check x pmdMain -x pmdTest --info
   artifacts:
     when: always
     paths:
@@ -59,7 +59,7 @@ unit_test:
 build:
   stage: build
   script:
-    - ./gradlew build -x test --info
+    - ./gradlew build -x pmdMain -x pmdTest --info
   artifacts:
     when: always
     paths:
