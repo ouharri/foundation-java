@@ -1,6 +1,5 @@
 plugins {
     id("soffa.lombok")
-    id("soffa.maven-publish")
     id("soffa.test.junit5")
     id("soffa.qa.coverage.l1")
 }

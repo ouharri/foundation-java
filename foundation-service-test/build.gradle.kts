@@ -1,7 +1,6 @@
 plugins {
     id("soffa.lombok")
     id("soffa.springboot.library")
-    id("soffa.maven-publish")
 }
 
 dependencies {
