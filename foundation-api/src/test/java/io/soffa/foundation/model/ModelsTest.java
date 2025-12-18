@@ -7,10 +7,10 @@ import com.openpojo.validation.test.impl.GetterTester;
 import com.openpojo.validation.test.impl.SetterTester;
 import org.junit.jupiter.api.Test;
 
-public class ModelsTest {
+class ModelsTest {
 
     @Test
-    public void testPojo() {
+    void testPojo() {
         Validator validator = ValidatorBuilder.create()
             .with(new SetterTester())
             .with(new GetterTester())

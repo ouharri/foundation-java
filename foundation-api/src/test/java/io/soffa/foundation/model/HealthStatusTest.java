@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class HealthStatusTest {
+class HealthStatusTest {
 
     @Test
-    public void testHealthStatus() {
+    void testHealthStatus() {
         assertEquals(3, HealthStatus.values().length);
         assertEquals("UP", HealthStatus.UP.name());
         assertEquals("DOWN", HealthStatus.DOWN.name());
