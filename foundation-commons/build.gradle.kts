@@ -33,9 +33,5 @@ dependencies {
     api("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.17.0")
     api("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.0")
     api("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.17.0")
-
-}
-repositories {
-    mavenCentral()
 }
 

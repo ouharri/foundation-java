@@ -19,7 +19,6 @@ default:
 variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.parallel=true -Dorg.gradle.configureondemand=true"
   NEXUS_RELEASES_URL: "https://artifacts.cirestechnologies.ma/nexus/repository/maven-central/"
-  NEXUS_SNAPSHOTS_URL: "https://artifacts.cirestechnologies.ma/nexus/repository/maven-snapshots/"
 
 workflow:
   rules:
@@ -84,7 +83,6 @@ publish_nexus:
       -PnexusUsername="$NEXUS_USERNAME"
       -PnexusPassword="$NEXUS_PASSWORD"
       -PnexusReleasesUrl="$NEXUS_RELEASES_URL"
-      -PnexusSnapshotsUrl="$NEXUS_SNAPSHOTS_URL"
       --info
   rules:
     - if: '$CI_COMMIT_BRANCH == "main" && ($CI_PIPELINE_SOURCE == "push" || $CI_PIPELINE_SOURCE == "merge_request_event")'

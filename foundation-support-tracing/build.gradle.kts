@@ -8,5 +8,3 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-sleuth")
     testImplementation(project(":foundation-service"))
 }
-
-

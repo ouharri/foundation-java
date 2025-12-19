@@ -7,7 +7,7 @@ dependencies {
     api(project(":foundation-commons"))
     api("com.amazonaws:aws-java-sdk-s3:1.12.701")
     //implementation("com.github.ben-manes.caffeine:caffeine:2.9.3")
-    compileOnly("org.springframework.boot:spring-boot-autoconfigure:3.2.4")
+    compileOnly("org.springframework.boot:spring-boot-autoconfigure:3.3.12")
     testImplementation(project(":foundation-service-test"))
 }
 repositories {

@@ -33,11 +33,4 @@ dependencies {
     }*/
     //implementation("org.springdoc:springdoc-openapi-ui:1.8.0")
     //implementation("io.github.classgraph:classgraph:4.8.170")
-
 }
-
-repositories {
-    mavenCentral()
-}
-
-
