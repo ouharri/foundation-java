@@ -19,8 +19,8 @@ import java.util.function.Supplier;
 @AllArgsConstructor
 public class MetricsRegistryImpl implements MetricsRegistry {
 
-    private final MeterRegistry registry;
     public static final String GLOBAL = "_global";
+    private final MeterRegistry registry;
 
     @Override
     public void increment(String name, double amount, Map<String, Object> tags) {
@@ -87,7 +87,7 @@ public class MetricsRegistryImpl implements MetricsRegistry {
                     Optional<?> opt = (Optional<?>) value;
                     if (opt.isPresent()) {
                         value = opt.get();
-                    }else {
+                    } else {
                         continue;
                     }
                 }

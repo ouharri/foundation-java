@@ -33,8 +33,6 @@ import java.util.stream.Collectors;
 
 public class SimpleDataStore implements DataStore {
 
-    private final DB db;
-
     private static final String TABLE = "table";
     private static final String ID_COLUMN = "idColumn";
     private static final String ID_FIELD = "idField";
@@ -43,6 +41,7 @@ public class SimpleDataStore implements DataStore {
     private static final String BINDING = "binding";
     private static final String COLUMNS = "columns";
     private static final String VALUES = "values";
+    private final DB db;
 
     public SimpleDataStore(DB db) {
         this.db = db;

@@ -75,7 +75,7 @@ class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
 
         if (status.value() >= HttpStatus.INTERNAL_SERVER_ERROR.value()) {
             LOG.error(error);
-        }else {
+        } else {
             LOG.error(error.getMessage());
         }
         if (!isProduction && status != HttpStatus.UNAUTHORIZED && status != HttpStatus.FORBIDDEN) {

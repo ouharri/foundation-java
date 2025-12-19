@@ -8,6 +8,6 @@ import java.util.Map;
 public class EmailConfig {
 
     private String from;
-    private Map<String,String> clients;
+    private Map<String, String> clients;
 
 }

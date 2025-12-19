@@ -13,7 +13,7 @@ public class ValidationException extends FunctionalException {
         this.field = field;
     }
 
-    public ValidationException(String field, String message, Throwable cause,  Object... args) {
+    public ValidationException(String field, String message, Throwable cause, Object... args) {
         super(cause, message, args);
         this.field = field;
     }

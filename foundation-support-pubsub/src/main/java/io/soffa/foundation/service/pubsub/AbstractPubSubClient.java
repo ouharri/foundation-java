@@ -21,7 +21,7 @@ public abstract class AbstractPubSubClient implements PubSubClient {
 
     public AbstractPubSubClient(String applicationName, PubSubClientConfig config, String broadcasting) {
         this.applicationName = applicationName;
-        if (config!=null) {
+        if (config != null) {
             this.broadcasting = config.getBroadcasting();
         }
         if (TextUtil.isEmpty(this.broadcasting)) {
@@ -49,7 +49,6 @@ public abstract class AbstractPubSubClient implements PubSubClient {
     }
 
 
-
     @SuppressWarnings("unchecked")
     @Override
     public final <T> CompletableFuture<T> request(@NonNull String subject, Message message, final Class<T> responseClass) {
@@ -59,7 +58,7 @@ public abstract class AbstractPubSubClient implements PubSubClient {
     public abstract CompletableFuture<byte[]> internalRequest(@NonNull String subject, Message message);
 
     public <T> T unwrapResponse(byte[] data, final Class<T> responseClass) {
-        if (data==null) {
+        if (data == null) {
             return null;
         }
         CallResult response = ObjectUtil.deserialize(data, CallResult.class);

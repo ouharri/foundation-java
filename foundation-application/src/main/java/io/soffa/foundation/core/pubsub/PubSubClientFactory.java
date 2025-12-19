@@ -14,7 +14,8 @@ public final class PubSubClientFactory {
 
     public static final AtomicLong ASYNC_TIMEOUT_SECONDS = new AtomicLong(30);
 
-    private PubSubClientFactory(){}
+    private PubSubClientFactory() {
+    }
 
     @SuppressWarnings("unchecked")
     public static <I, O, T extends Operation<I, O>> T of(@NotNull Class<T> operationClass, @NonNull String subjet, PubSubClient client) {
@@ -33,12 +34,12 @@ public final class PubSubClientFactory {
                 Object input = null;
                 boolean hasNoInput = args.length == 1;
                 if (hasNoInput) {
-                    context = (RequestContext)args[0];
-                }else {
+                    context = (RequestContext) args[0];
+                } else {
                     input = args[0];
                     context = (RequestContext) args[1];
                 }
-                Message msg = new Message(operationClass.getSimpleName(),input, context);
+                Message msg = new Message(operationClass.getSimpleName(), input, context);
                 return client.request(subjet, msg, returnType).get(ASYNC_TIMEOUT_SECONDS.get(), TimeUnit.SECONDS);
             });
     }

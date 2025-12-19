@@ -92,7 +92,7 @@ public final class HttpUtil {
         builder.addNetworkInterceptor(chain -> {
             Request originalRequest = chain.request();
             String contentType = originalRequest.header("Content-Type");
-            if (contentType==null || TextUtil.isEmpty(contentType) || contentType.contains("application/json")) {
+            if (contentType == null || TextUtil.isEmpty(contentType) || contentType.contains("application/json")) {
                 contentType = "application/json"; // Because OkHttp adds ;charset-utf8
             }
             Request.Builder request = originalRequest.newBuilder().header("Content-Type", contentType);

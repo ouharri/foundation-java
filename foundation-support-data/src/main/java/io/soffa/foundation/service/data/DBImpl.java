@@ -49,14 +49,14 @@ import java.util.stream.Collectors;
 public final class DBImpl extends AbstractDataSource implements ApplicationListener<ContextRefreshedEvent>, DB {
 
     private static final Logger LOG = Logger.get(DBImpl.class);
-    private String tablesPrefix;
+    private static final String TENANT_PLACEHOLDER = "__tenant__";
+    private static final AtomicReference<String> LOCK = new AtomicReference<>("DB_LOCK");
     private final AppConfig appConfig;
+    private final ApplicationContext context;
+    private final Map<String, DatasourceInfo> registry = new ConcurrentHashMap<>();
+    private String tablesPrefix;
     private String tenanstListQuery;
     private LockProvider lockProvider;
-    private static final String TENANT_PLACEHOLDER = "__tenant__";
-    private final ApplicationContext context;
-    private static final AtomicReference<String> LOCK = new AtomicReference<>("DB_LOCK");
-    private final Map<String, DatasourceInfo> registry = new ConcurrentHashMap<>();
 
     @SneakyThrows
     public DBImpl(final ApplicationContext context,

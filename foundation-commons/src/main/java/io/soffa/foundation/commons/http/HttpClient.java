@@ -22,12 +22,12 @@ public class HttpClient {
         this.client = client;
     }
 
-    public void setDefaultInstance(HttpClient instance) {
-        defaultInstance = instance;
-    }
-
     public static HttpClient getInstance() {
         return defaultInstance;
+    }
+
+    public void setDefaultInstance(HttpClient instance) {
+        defaultInstance = instance;
     }
 
     @SneakyThrows

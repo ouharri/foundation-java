@@ -28,7 +28,7 @@ public interface DataStore {
 
     <E> long count(TenantId tenant, @NonNull Class<E> entityClass, @NonNull String where, Map<String, Object> binding);
 
-    default <E> int delete (@NonNull Class<E> entityClass, @NonNull String where, Map<String, Object> binding) {
+    default <E> int delete(@NonNull Class<E> entityClass, @NonNull String where, Map<String, Object> binding) {
         return delete(TenantId.INHERIT, entityClass, where, binding);
     }
 

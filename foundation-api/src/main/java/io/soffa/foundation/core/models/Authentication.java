@@ -12,7 +12,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Data
 @Builder
-public class Authentication   {
+public class Authentication {
 
     private String application;
     // private String userId;

@@ -105,7 +105,7 @@ public class LocalPlatformAuthManager implements PlatformAuthManager {
             LOG.debug("auth.app: %s", context.getApplicationName());
             if (auth.getClaims() != null) {
                 LOG.debug("auth.claims: %d", auth.getClaims().size());
-                for (Map.Entry<String,Object> claim : auth.getClaims().entrySet()) {
+                for (Map.Entry<String, Object> claim : auth.getClaims().entrySet()) {
                     LOG.debug("auth.claims %s --> %s", claim.getKey(), claim.getValue());
                 }
             }
@@ -124,7 +124,7 @@ public class LocalPlatformAuthManager implements PlatformAuthManager {
         if (auth.getProfile() != null) {
             permissions.add(new SimpleGrantedAuthority(Permissions.IS_USER));
             permissions.add(new SimpleGrantedAuthority(Permissions.HAS_USER_PROFILE));
-        }else {
+        } else {
             permissions.add(new SimpleGrantedAuthority(Permissions.IS_APPLICATION));
         }
         if (TextUtil.isNotEmpty(context.getApplicationName())) {

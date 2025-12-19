@@ -18,15 +18,6 @@ import java.util.Optional;
 public class UrlInfo {
 
     public static final String PROTOCL_DIVIDER = "://";
-
-    private String url;
-    private String protocol;
-    private int port;
-    private String hostname;
-    private String username;
-    private String password;
-    private String path;
-    private Map<String, String> params;
     private static final Map<String, Integer> DEFAULT_PORTS = new HashMap<>();
 
     static {
@@ -36,41 +27,14 @@ public class UrlInfo {
         DEFAULT_PORTS.put("amqps", 5672);
     }
 
-    public String getAddress() {
-        if (isDefaultPort()) {
-            return protocol + PROTOCL_DIVIDER + hostname;
-        }
-        return protocol + PROTOCL_DIVIDER + hostname + ":" + port;
-    }
-
-    public boolean hasParam(String name) {
-        return params.containsKey(name);
-    }
-
-    public Optional<String> param(String name) {
-        return Optional.ofNullable(params.get(name));
-    }
-
-    public String param(String name, String defaultValue) {
-        return Optional.ofNullable(params.get(name)).orElse(defaultValue);
-    }
-
-    public String getHostnameWithPort() {
-        if (port > 0) {
-            return hostname + ":" + port;
-        }
-        return hostname;
-    }
-
-    private boolean isDefaultPort() {
-        if (port == 0) return true;
-        for (String protocol : DEFAULT_PORTS.keySet()) {
-            if (protocol.equalsIgnoreCase(this.protocol)) {
-                return true;
-            }
-        }
-        return false;
-    }
+    private String url;
+    private String protocol;
+    private int port;
+    private String hostname;
+    private String username;
+    private String password;
+    private String path;
+    private Map<String, String> params;
 
     @SneakyThrows
     public static UrlInfo parse(String value) {
@@ -129,6 +93,42 @@ public class UrlInfo {
             url.getPath(),
             params
         );
+    }
+
+    public String getAddress() {
+        if (isDefaultPort()) {
+            return protocol + PROTOCL_DIVIDER + hostname;
+        }
+        return protocol + PROTOCL_DIVIDER + hostname + ":" + port;
+    }
+
+    public boolean hasParam(String name) {
+        return params.containsKey(name);
+    }
+
+    public Optional<String> param(String name) {
+        return Optional.ofNullable(params.get(name));
+    }
+
+    public String param(String name, String defaultValue) {
+        return Optional.ofNullable(params.get(name)).orElse(defaultValue);
+    }
+
+    public String getHostnameWithPort() {
+        if (port > 0) {
+            return hostname + ":" + port;
+        }
+        return hostname;
+    }
+
+    private boolean isDefaultPort() {
+        if (port == 0) return true;
+        for (String protocol : DEFAULT_PORTS.keySet()) {
+            if (protocol.equalsIgnoreCase(this.protocol)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

@@ -63,7 +63,7 @@ public class OperationsMapping {
 
                     if (intf != Operation.class) {
                         register(intf, operation, method, bindingName);
-                    }else {
+                    } else {
                         register(targetClass, operation, method, bindingName);
                     }
                     break;
@@ -81,12 +81,11 @@ public class OperationsMapping {
         inputTypes.put(target.getSimpleName(), inputType);
         inputTypes.put(target.getName(), inputType);
 
-        if (bindingName!=null) {
+        if (bindingName != null) {
             inputTypes.put(bindingName, inputType);
         }
 
     }
-
 
 
 }

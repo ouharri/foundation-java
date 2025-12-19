@@ -14,6 +14,10 @@ public class FakeEmailSender implements EmailSender {
     private static final Logger LOG = Logger.get(FakeEmailSender.class);
     private static final AtomicInteger COUNTER = new AtomicInteger(0);
 
+    public static int getCounter() {
+        return COUNTER.get();
+    }
+
     @Override
     public EmailAck send(Email message) {
         LOG.info(
@@ -22,9 +26,5 @@ public class FakeEmailSender implements EmailSender {
         );
         COUNTER.incrementAndGet();
         return new EmailAck("OK", RandomUtil.nextString());
-    }
-
-    public static int getCounter() {
-        return COUNTER.get();
     }
 }

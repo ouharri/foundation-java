@@ -28,7 +28,7 @@ public class Message implements Serializable {
     private Map<String, String> headers;
 
 
-    public Message(String operation,  RequestContext context) {
+    public Message(String operation, RequestContext context) {
         this(null, operation, null, null, context);
     }
 
@@ -61,7 +61,7 @@ public class Message implements Serializable {
         return headers != null && !headers.isEmpty();
     }
 
-    public  RequestContext getContext() {
+    public RequestContext getContext() {
         return DefaultRequestContext.fromHeaders(headers);
     }
 }

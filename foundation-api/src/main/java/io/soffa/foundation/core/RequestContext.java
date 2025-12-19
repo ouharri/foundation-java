@@ -22,6 +22,8 @@ public interface RequestContext {
 
     String getAuthorization();
 
+    void setAuthorization(String value);
+
     default SideEffects getSideEffects() {
         return null;
     }
@@ -30,35 +32,33 @@ public interface RequestContext {
 
     String getTenantId();
 
-    void setApplicationName(String value);
-
     void setTenantId(String value);
-
-    void setTraceId(String value);
-
-    void setSpanId(String value);
-
-    void setSender(String value);
-
-    void setAuthorization(String value);
 
     boolean isAuthenticated();
 
     String getApplicationName();
 
+    void setApplicationName(String value);
+
     String getSender();
+
+    void setSender(String value);
 
     Optional<String> getUsername();
 
     boolean hasAuthorization();
 
-    void setAuthentication(Authentication auth);
-
     Authentication getAuthentication();
+
+    void setAuthentication(Authentication auth);
 
     String getSpanId();
 
+    void setSpanId(String value);
+
     String getTraceId();
+
+    void setTraceId(String value);
 
     default RequestContext withAuthorization(String authorization) {
         setAuthorization(authorization);

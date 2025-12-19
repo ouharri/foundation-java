@@ -19,7 +19,8 @@ import java.util.Date;
 
 public final class ObjectMapperFactory {
 
-    private ObjectMapperFactory(){}
+    private ObjectMapperFactory() {
+    }
 
     public static ObjectMapper newJsonMapper() {
         return newJsonMapper(false, null);
@@ -55,7 +56,7 @@ public final class ObjectMapperFactory {
         }
 
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        if (strategy!=null) {
+        if (strategy != null) {
             mapper.setPropertyNamingStrategy(strategy);
         }
 
@@ -68,10 +69,12 @@ public final class ObjectMapperFactory {
 
     private static class IgnoreAnnotations extends JacksonAnnotationIntrospector {
         private static final long serialVersionUID = 1L;
+
         @Override
         public JsonProperty.Access findPropertyAccess(Annotated m) {
             return null;
         }
+
         @Override
         public boolean hasIgnoreMarker(AnnotatedMember m) {
             return false;

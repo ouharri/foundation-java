@@ -39,7 +39,7 @@ public final class TokenUtil {
             .withSubject(subject)
             .withExpiresAt(DateUtil.plusMinutes(issuedAt, timeToLiveInMinutes))
             .withIssuer(issuer);
-        if (claims!=null) {
+        if (claims != null) {
             for (Map.Entry<String, Object> claim : claims.entrySet()) {
                 populateClaims(builder, claim.getKey(), claim.getValue());
             }
@@ -49,7 +49,7 @@ public final class TokenUtil {
 
     @SuppressWarnings("unchecked")
     private static void populateClaims(JWTCreator.Builder builder, String name, Object value) {
-        if (value==null)  {
+        if (value == null) {
             LOG.warn("Skipping empy claim: %s", name);
             return;
         }
@@ -96,7 +96,7 @@ public final class TokenUtil {
         Date issuedAt = new Date();
         JWTClaimsSet.Builder claimsSetBuilder = new JWTClaimsSet.Builder().subject(subject).issuer(issuer)
             .issueTime(issuedAt)
-            .expirationTime(DateUtil.plusSeconds(issuedAt, (int)ttl.getSeconds()));
+            .expirationTime(DateUtil.plusSeconds(issuedAt, (int) ttl.getSeconds()));
         if (claims != null) {
             for (Map.Entry<String, Object> entry : claims.entrySet()) {
                 claimsSetBuilder.claim(entry.getKey(), entry.getValue());

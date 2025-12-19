@@ -20,7 +20,7 @@ public final class TenantHolder {
     }
 
     public static void clear() {
-        set((String)null);
+        set((String) null);
     }
 
     public static boolean isDefault() {

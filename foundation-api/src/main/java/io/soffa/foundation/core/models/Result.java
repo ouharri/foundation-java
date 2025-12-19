@@ -9,12 +9,12 @@ import java.util.List;
 @Getter
 public final class Result<T> {
 
+    private final List<SideEffect> effects = new ArrayList<>();
     private T data;
     private boolean success = true;
     private String error;
     private String errorDetails;
     private String tenant;
-    private final List<SideEffect> effects = new ArrayList<>();
 
     private Result() {
     }
@@ -28,7 +28,7 @@ public final class Result<T> {
     }
 
     public static <T> Result<T> of(T data) {
-        return new Result<>(null, true,  data, null, null);
+        return new Result<>(null, true, data, null, null);
     }
 
     public static <T> Result<T> failed(T data) {
@@ -40,7 +40,7 @@ public final class Result<T> {
     }
 
     public static <T> Result<T> of(Exception e) {
-        return new Result<>(null, false, null,  e.getMessage(), null);
+        return new Result<>(null, false, null, e.getMessage(), null);
     }
 
     public static <T> Result<T> of(String tenant, T data) {

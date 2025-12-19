@@ -4,5 +4,5 @@ import java.net.URL;
 
 public interface HttpResponseProvider {
 
-    HttpResponse apply(URL url,HttpHeaders headers);
+    HttpResponse apply(URL url, HttpHeaders headers);
 }

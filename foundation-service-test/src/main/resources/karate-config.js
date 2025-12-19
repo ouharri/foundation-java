@@ -4,7 +4,7 @@ function fn() {
     // karate.configure('retry', { count: 2, interval: 1000 });
 
     var config = {
-        baseUrl : karate.properties['baseUrl']
+        baseUrl: karate.properties['baseUrl']
     };
     return config;
 }

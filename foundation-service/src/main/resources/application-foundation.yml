@@ -135,8 +135,8 @@ logging.level.io.soffa: DEBUG
 logging.level.foundation: DEBUG
 
 management.endpoint.health:
-    show-components: always
-    health.show-details: always
+  show-components: always
+  health.show-details: always
 
 #---
 #spring.config.activate.on-profile: amqp

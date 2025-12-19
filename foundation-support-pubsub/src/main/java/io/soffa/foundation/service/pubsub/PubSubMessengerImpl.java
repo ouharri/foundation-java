@@ -13,9 +13,9 @@ import java.util.concurrent.CompletableFuture;
 
 public class PubSubMessengerImpl implements PubSubMessenger {
 
+    public static final String DEFAULT = "default";
     private final Map<String, PubSubClient> clients;
     private final PubSubClient defaultClient;
-    public static final String DEFAULT = "default";
 
     public PubSubMessengerImpl(Map<String, PubSubClient> clients) {
         this.clients = clients;

@@ -7,9 +7,9 @@ import java.util.Map;
 
 public class Mailer implements EmailSender {
 
+    public static final String DEFAULT = "default";
     private final Map<String, EmailSender> clients;
     private EmailSender defaultSender;
-    public static final String DEFAULT = "default";
 
     public Mailer(Map<String, EmailSender> clients) {
         this.clients = clients;

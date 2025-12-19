@@ -17,13 +17,12 @@ import static org.junit.jupiter.api.Assertions.*;
 @ActiveProfiles("test")
 class FeatureRepositoriesTest {
 
+    public static final String EVENT = "accounts.send_activation_email";
+    public static final String ACCOUNT_ID = "123456789";
     @Autowired
     private PendingJobRepository pendingJobs;
     @Autowired
     private JournalRepository journal;
-
-    public static final String EVENT = "accounts.send_activation_email";
-    public static final String ACCOUNT_ID = "123456789";
 
     @Test
     void testPendingJobs() {

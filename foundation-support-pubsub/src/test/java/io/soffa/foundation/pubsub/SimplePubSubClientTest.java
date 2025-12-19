@@ -23,7 +23,7 @@ public class SimplePubSubClientTest {
             return Optional.empty();
         });
 
-        client.publish("test", new Message( "hello", new DefaultRequestContext()));
+        client.publish("test", new Message("hello", new DefaultRequestContext()));
 
         assertEquals(1, counter.get());
     }

@@ -4,7 +4,8 @@ import org.apache.commons.lang3.RandomUtils;
 
 public final class RandomUtil {
 
-    private RandomUtil() {}
+    private RandomUtil() {
+    }
 
     public static String nextString() {
         return IdGenerator.shortUUID();

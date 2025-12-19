@@ -42,7 +42,7 @@ public class Token {
             for (String candidate : candidates) {
                 if (claim.equalsIgnoreCase(candidate)) {
                     Object value = claims.get(claim);
-                    if (value!=null) {
+                    if (value != null) {
                         return Optional.of(value.toString());
                     }
                 }

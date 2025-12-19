@@ -28,8 +28,8 @@ public class LogContextAspect {
         Map<String, String> values = new HashMap<>();
 
         //EvaluationContext pcontext  = new StandardEvaluationContext(pjp.getArgs());
-        Map<String,Object> root = new HashMap<>(); // ImmutableMap.of(pjp.getArgs());
-        if (pjp.getArgs()!=null) {
+        Map<String, Object> root = new HashMap<>(); // ImmutableMap.of(pjp.getArgs());
+        if (pjp.getArgs() != null) {
             for (int i = 0; i < pjp.getArgs().length; i++) {
                 root.put("arg" + i, pjp.getArgs()[i]);
             }

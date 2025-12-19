@@ -23,9 +23,9 @@ import java.util.stream.Collectors;
 
 public class SendgridEmailSender implements EmailSender {
 
+    private static final Logger LOG = Logger.get(SendgridEmailSender.class);
     private final String defaultSender;
     private final SendGrid sendgrid;
-    private static final Logger LOG = Logger.get(SendgridEmailSender.class);
 
 
     public SendgridEmailSender(String apiKey, String defaultSender) {

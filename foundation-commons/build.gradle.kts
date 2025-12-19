@@ -25,7 +25,7 @@ dependencies {
     api("com.auth0:java-jwt:4.4.0")
     api("com.nimbusds:nimbus-jose-jwt:10.6")
     api("org.apache.commons:commons-text:1.12.0")
-    implementation("com.jsoniter:jsoniter:0.9.23")  {
+    implementation("com.jsoniter:jsoniter:0.9.23") {
         exclude(group = "com.fasterxml.jackson.core")
         exclude(group = "com.google.code.gson")
     }

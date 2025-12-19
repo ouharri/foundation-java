@@ -16,17 +16,17 @@ import java.util.Map;
 @Builder
 public class DataSourceProperties {
 
-    private static final Logger LOG = Logger.get(DataSourceProperties.class);
     public static final String H2_DRIVER = "org.h2.Driver";
     public static final String H2 = "h2";
     public static final String PG = "postgresql";
+    private static final Logger LOG = Logger.get(DataSourceProperties.class);
     private String name;
     private String url;
     private String username;
     private String password;
     private String driverClassName;
     private String schema;
-    private Map<String,String> properties;
+    private Map<String, String> properties;
     private List<String> migrations;
 
     @SneakyThrows
@@ -48,7 +48,7 @@ public class DataSourceProperties {
         if (schema != null) {
             if (provider.equals(H2)) {
                 schema = schema.toUpperCase();
-            }else {
+            } else {
                 schema = schema.toLowerCase();
             }
         }
@@ -93,7 +93,7 @@ public class DataSourceProperties {
             if (TextUtil.isNotEmpty(schema)) {
                 // createSchema(jdbcUrl.toString(), url.getUsername(), url.getPassword(), schema);
                 jdbcUrl.append("?currentSchema=").append(schema).append('&');
-            }else {
+            } else {
                 jdbcUrl.append('?');
             }
             jdbcUrl.append("ApplicationName=").append(applicationName);

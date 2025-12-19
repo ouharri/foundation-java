@@ -19,6 +19,10 @@ public final class BeanMapper<T> implements RowMapper<T> {
         this.entityInfo = entityInfo;
     }
 
+    public static <T> BeanMapper<T> of(EntityInfo<T> info) {
+        return new BeanMapper<>(info);
+    }
+
     @SneakyThrows
     @Override
     public T map(ResultSet rs, StatementContext ctx) {
@@ -45,17 +49,13 @@ public final class BeanMapper<T> implements RowMapper<T> {
             if (convertToMap && Mappers.isJson(value.toString())) {
                 if (Map.class.isAssignableFrom(target)) {
                     value = Mappers.JSON.deserializeMap(value.toString());
-                }else {
+                } else {
                     value = Mappers.JSON_FULLACCESS_SNAKE.deserializeMap(value.toString());
                 }
             }
             values.put(col, value);
         }
         return Mappers.JSON_FULLACCESS_SNAKE.convert(values, entityInfo.getEntityClass());
-    }
-
-    public static <T> BeanMapper<T> of(EntityInfo<T> info) {
-        return new BeanMapper<>(info);
     }
 
 }

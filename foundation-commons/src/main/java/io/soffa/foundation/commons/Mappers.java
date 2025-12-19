@@ -19,6 +19,9 @@ public final class Mappers {
         ObjectMapperFactory.newJsonMapper()
     );
 
+    private Mappers() {
+    }
+
     public static boolean isJson(String input) {
         try {
             new JSONObject(input);
@@ -27,8 +30,5 @@ public final class Mappers {
             return false;
         }
     }
-
-
-    private Mappers() {}
 
 }

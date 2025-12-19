@@ -21,7 +21,7 @@ public final class Environment {
 
     @SuppressWarnings("unchecked")
     public static <T> T get(String key) {
-        return (T)PROPS.getProperty(key);
+        return (T) PROPS.getProperty(key);
     }
 
     @SuppressWarnings("unchecked")

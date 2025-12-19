@@ -1,4 +1,4 @@
 package io.soffa.foundation.errors;
 
-public interface ManagedException   {
+public interface ManagedException {
 }

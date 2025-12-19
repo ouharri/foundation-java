@@ -5,9 +5,9 @@ import java.util.Optional;
 
 public class HttpContextHolder {
 
-    private static final ThreadLocal<Map<String,String>> CURRENT = new InheritableThreadLocal<>();
+    private static final ThreadLocal<Map<String, String>> CURRENT = new InheritableThreadLocal<>();
 
-    public static void set(Map<String,String> value) {
+    public static void set(Map<String, String> value) {
         if (value == null) {
             CURRENT.remove();
         } else {
@@ -23,7 +23,7 @@ public class HttpContextHolder {
         return CURRENT.get() == null;
     }
 
-    public static Optional<Map<String,String>> get() {
+    public static Optional<Map<String, String>> get() {
         return Optional.ofNullable(CURRENT.get());
     }
 

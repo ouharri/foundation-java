@@ -5,7 +5,8 @@ import org.apache.commons.codec.digest.HmacUtils;
 
 public final class SignatureUtil {
 
-    private SignatureUtil() {}
+    private SignatureUtil() {
+    }
 
     public static String sign(String input, String secret) {
         HmacUtils hm256 = new HmacUtils(HmacAlgorithms.HMAC_SHA_256, secret);

@@ -39,17 +39,46 @@ public class DefaultRequestContext implements RequestContext {
         return new DefaultRequestContext().withTenant(tenantId);
     }
 
-    @Override
-    public boolean hasAuthorization() {
-        return TextUtil.isNotEmpty(authorization);
-    }
-
     @SneakyThrows
     public static void setServiceName(String value) {
         if (TextUtil.isEmpty(value)) {
             throw new IllegalArgumentException("Service name cannot be empty");
         }
         serviceName = value;
+    }
+
+    @SneakyThrows
+    public static RequestContext fromHeaders(Map<String, String> headers) {
+        RequestContext context = new DefaultRequestContext();
+        if (headers == null) {
+            return context;
+        }
+        for (Map.Entry<String, String> e : headers.entrySet()) {
+            String value = e.getValue();
+            if (TextUtil.isEmpty(value)) {
+                continue;
+            }
+            String key = e.getKey();
+            if (key.equalsIgnoreCase(RequestContext.APPLICATION)) {
+                context.setApplicationName(value);
+            } else if (key.equalsIgnoreCase(RequestContext.TENANT_ID)) {
+                context.setTenantId(value);
+            } else if (key.equalsIgnoreCase(RequestContext.SPAN_ID)) {
+                context.setTraceId(value);
+            } else if (key.equalsIgnoreCase(RequestContext.TRACE_ID)) {
+                context.setSpanId(value);
+            } else if (key.equalsIgnoreCase(RequestContext.SERVICE_NAME)) {
+                context.setSender(value);
+            } else if (key.equalsIgnoreCase(RequestContext.AUTHORIZATION)) {
+                context.setAuthorization(value);
+            }
+        }
+        return context;
+    }
+
+    @Override
+    public boolean hasAuthorization() {
+        return TextUtil.isNotEmpty(authorization);
     }
 
     @Override
@@ -126,35 +155,6 @@ public class DefaultRequestContext implements RequestContext {
         }
         contextMap.put("service_name", serviceName);
         return contextMap;
-    }
-
-    @SneakyThrows
-    public static RequestContext fromHeaders(Map<String, String> headers) {
-        RequestContext context = new DefaultRequestContext();
-        if (headers == null) {
-            return context;
-        }
-        for (Map.Entry<String, String> e : headers.entrySet()) {
-            String value = e.getValue();
-            if (TextUtil.isEmpty(value)) {
-                continue;
-            }
-            String key = e.getKey();
-            if (key.equalsIgnoreCase(RequestContext.APPLICATION)) {
-                context.setApplicationName(value);
-            } else if (key.equalsIgnoreCase(RequestContext.TENANT_ID)) {
-                context.setTenantId(value);
-            } else if (key.equalsIgnoreCase(RequestContext.SPAN_ID)) {
-                context.setTraceId(value);
-            } else if (key.equalsIgnoreCase(RequestContext.TRACE_ID)) {
-                context.setSpanId(value);
-            } else if (key.equalsIgnoreCase(RequestContext.SERVICE_NAME)) {
-                context.setSender(value);
-            } else if (key.equalsIgnoreCase(RequestContext.AUTHORIZATION)) {
-                context.setAuthorization(value);
-            }
-        }
-        return context;
     }
 
     @Override

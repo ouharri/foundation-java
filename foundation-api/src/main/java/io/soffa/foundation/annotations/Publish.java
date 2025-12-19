@@ -9,6 +9,7 @@ import java.lang.annotation.*;
 public @interface Publish {
 
     String event();
+
     String target() default "*";
 
 }

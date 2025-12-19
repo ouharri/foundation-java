@@ -39,14 +39,14 @@ public class JacksonMapper implements Mapper {
     }
 
     @Override
-    public  String fromXml(String xmlInput) {
+    public String fromXml(String xmlInput) {
         if (xmlInput == null) return null;
         return XML.toJSONObject(xmlInput).toString();
     }
 
     @SneakyThrows
     @Override
-    public  <T> T fromXml(String xmlInput, String root, Class<T> kind) {
+    public <T> T fromXml(String xmlInput, String root, Class<T> kind) {
         if (xmlInput == null) {
             return ClassUtil.newInstance(kind);
         }

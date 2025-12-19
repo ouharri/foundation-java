@@ -76,7 +76,7 @@ public class DefaultTokenProvider implements TokenProvider, ClaimsExtractor {
                     claims,
                     ttlInMinutes
                 );
-            }else {
+            } else {
                 throw new ConfigurationException("No secret or private jwks configured");
             }
         } else {
@@ -196,19 +196,19 @@ public class DefaultTokenProvider implements TokenProvider, ClaimsExtractor {
                     continue;
                 }
                 Object value = entry.getValue().asString();
-                if (value==null) {
+                if (value == null) {
                     value = entry.getValue().asBoolean();
-                    if (value==null) {
+                    if (value == null) {
                         value = entry.getValue().asDouble();
-                        if (value==null) {
+                        if (value == null) {
                             value = entry.getValue().asInt();
-                            if (value==null) {
+                            if (value == null) {
                                 value = entry.getValue().asLong();
-                                if (value==null) {
+                                if (value == null) {
                                     value = entry.getValue().asDate();
-                                    if (value==null) {
+                                    if (value == null) {
                                         value = entry.getValue().asMap();
-                                        if (value==null) {
+                                        if (value == null) {
                                             LOG.warn("Unsupported claim type '%s', using string.", entry.getKey());
                                             value = entry.toString();
                                         }

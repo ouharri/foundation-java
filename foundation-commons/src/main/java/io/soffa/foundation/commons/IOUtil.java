@@ -46,7 +46,7 @@ public final class IOUtil {
 
     @SneakyThrows
     public static String getResourceAsString(String path) {
-        try(InputStream stream = IOUtil.class.getResourceAsStream(path)){
+        try (InputStream stream = IOUtil.class.getResourceAsStream(path)) {
             if (stream == null) {
                 throw new TechnicalException("Resource not found: %s", path);
             }

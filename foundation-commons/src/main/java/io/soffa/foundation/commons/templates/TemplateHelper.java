@@ -23,7 +23,7 @@ public final class TemplateHelper {
     }
 
     public static String render(File template, Map<String, Object> context) {
-        try(InputStream is = Files.newInputStream(Paths.get(template.toURI()))) {
+        try (InputStream is = Files.newInputStream(Paths.get(template.toURI()))) {
             return render(is, context);
         } catch (IOException e) {
             throw new TechnicalException("Error while rendering template", e);

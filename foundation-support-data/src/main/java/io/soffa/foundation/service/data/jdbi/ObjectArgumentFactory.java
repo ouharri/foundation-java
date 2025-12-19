@@ -30,7 +30,7 @@ public class ObjectArgumentFactory implements ArgumentFactory.Preparable {
             } else if (value instanceof VO) {
                 statement.setString(position, ((VO) value).getValue());
             } else {
-                String serialized = Mappers.JSON_FULLACCESS_SNAKE.serialize( value);
+                String serialized = Mappers.JSON_FULLACCESS_SNAKE.serialize(value);
                 statement.setString(position, serialized);
             }
         };

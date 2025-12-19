@@ -14,8 +14,8 @@ import java.util.Objects;
 public class DatasourceInfo {
 
     private final String name;
-    private DataSource dataSource;
     private final DataSourceConfig config;
+    private DataSource dataSource;
     private boolean migrated;
     private LocalContainerEntityManagerFactoryBean em;
     private PlatformTransactionManager tx;
@@ -31,7 +31,7 @@ public class DatasourceInfo {
 
     }
 
-    public void configureTx(EntityManagerFactoryBuilder builder,  String... packages) {
+    public void configureTx(EntityManagerFactoryBuilder builder, String... packages) {
         this.em = builder.dataSource(dataSource).packages(packages)
             .persistenceUnit(name)
             .build();

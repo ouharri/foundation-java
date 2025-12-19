@@ -12,7 +12,7 @@ public final class MapUtil {
         if (args.length % 2 != 0) {
             throw new IllegalArgumentException("MapUtil.create() requires an even number of arguments");
         }
-        Map<String,Object> result = new HashMap<>();
+        Map<String, Object> result = new HashMap<>();
         for (int i = 0; i < args.length; i += 2) {
             if (!(args[i] instanceof String)) {
                 throw new IllegalArgumentException("MapUtil.create() requires String keys");
@@ -23,8 +23,9 @@ public final class MapUtil {
     }
 
     public static boolean isEmpty(Map<String, Object> tags) {
-        return tags==null || tags.isEmpty();
+        return tags == null || tags.isEmpty();
     }
+
     public static boolean isNotEmpty(Map<String, Object> tags) {
         return !isEmpty(tags);
     }

@@ -19,7 +19,7 @@ public class TestTracingDisabled {
     private ApplicationContext context;
 
     @Test
-    public void testContext(){
+    public void testContext() {
         assertNotNull(context);
     }
 

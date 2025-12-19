@@ -13,8 +13,29 @@ import java.util.Map;
 public final class ErrorUtil {
 
     private static final String ALL_PACKAGES = "*";
-    private static String defaultErrorPackage = "*";
     private static final Map<Class<?>, Integer> MAPPED_STATUS = new LinkedHashMap<>();
+    private static String defaultErrorPackage = "*";
+
+    static {
+        MAPPED_STATUS.put(DatabaseException.class, HttpStatus.SERVER_ERROR);
+        MAPPED_STATUS.put(ConfigurationException.class, HttpStatus.SERVER_ERROR);
+        MAPPED_STATUS.put(RequirementException.class, HttpStatus.EXPECTATION_FAILED);
+        MAPPED_STATUS.put(NotImplementedException.class, HttpStatus.NOT_IMLEMENTED);
+        MAPPED_STATUS.put(InvalidTenantException.class, HttpStatus.BAD_REQUEST);
+        MAPPED_STATUS.put(ValidationException.class, HttpStatus.BAD_REQUEST);
+        MAPPED_STATUS.put(ConflictException.class, HttpStatus.CONFLICT);
+        MAPPED_STATUS.put(ForbiddenException.class, HttpStatus.FORBIDDEN);
+        MAPPED_STATUS.put(UnauthorizedException.class, HttpStatus.UNAUTHORIZED);
+        MAPPED_STATUS.put(InvalidTokenException.class, HttpStatus.UNAUTHORIZED);
+        MAPPED_STATUS.put(InvalidAuthException.class, HttpStatus.UNAUTHORIZED);
+        MAPPED_STATUS.put(ResourceNotFoundException.class, HttpStatus.NOT_FOUND);
+        MAPPED_STATUS.put(NoContentException.class, HttpStatus.NO_CONTENT);
+        MAPPED_STATUS.put(TodoException.class, HttpStatus.NOT_IMLEMENTED);
+        MAPPED_STATUS.put(SocketException.class, HttpStatus.REQUEST_TIMEOUT);
+        MAPPED_STATUS.put(TimeoutException.class, HttpStatus.REQUEST_TIMEOUT);
+        MAPPED_STATUS.put(TechnicalException.class, HttpStatus.SERVER_ERROR);
+        MAPPED_STATUS.put(FunctionalException.class, HttpStatus.BAD_REQUEST);
+    }
 
     private ErrorUtil() {
     }
@@ -54,7 +75,7 @@ public final class ErrorUtil {
         if (error == null) {
             return "Unknown error";
         }
-        if (lookup!=null && lookup.isInstance(error)) {
+        if (lookup != null && lookup.isInstance(error)) {
             if (TextUtil.isEmpty(error.getMessage())) {
                 return loookupOriginalMessage(error.getCause(), lookup);
             }
@@ -96,26 +117,5 @@ public final class ErrorUtil {
             }
         }
         return -1;
-    }
-
-    static {
-        MAPPED_STATUS.put(DatabaseException.class, HttpStatus.SERVER_ERROR);
-        MAPPED_STATUS.put(ConfigurationException.class, HttpStatus.SERVER_ERROR);
-        MAPPED_STATUS.put(RequirementException.class, HttpStatus.EXPECTATION_FAILED);
-        MAPPED_STATUS.put(NotImplementedException.class, HttpStatus.NOT_IMLEMENTED);
-        MAPPED_STATUS.put(InvalidTenantException.class, HttpStatus.BAD_REQUEST);
-        MAPPED_STATUS.put(ValidationException.class, HttpStatus.BAD_REQUEST);
-        MAPPED_STATUS.put(ConflictException.class, HttpStatus.CONFLICT);
-        MAPPED_STATUS.put(ForbiddenException.class, HttpStatus.FORBIDDEN);
-        MAPPED_STATUS.put(UnauthorizedException.class, HttpStatus.UNAUTHORIZED);
-        MAPPED_STATUS.put(InvalidTokenException.class, HttpStatus.UNAUTHORIZED);
-        MAPPED_STATUS.put(InvalidAuthException.class, HttpStatus.UNAUTHORIZED);
-        MAPPED_STATUS.put(ResourceNotFoundException.class, HttpStatus.NOT_FOUND);
-        MAPPED_STATUS.put(NoContentException.class, HttpStatus.NO_CONTENT);
-        MAPPED_STATUS.put(TodoException.class, HttpStatus.NOT_IMLEMENTED);
-        MAPPED_STATUS.put(SocketException.class, HttpStatus.REQUEST_TIMEOUT );
-        MAPPED_STATUS.put(TimeoutException.class, HttpStatus.REQUEST_TIMEOUT);
-        MAPPED_STATUS.put(TechnicalException.class, HttpStatus.SERVER_ERROR);
-        MAPPED_STATUS.put(FunctionalException.class, HttpStatus.BAD_REQUEST);
     }
 }

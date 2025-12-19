@@ -28,7 +28,7 @@ public class MessageEntity {
     private long counter;
     @Convert(converter = MapConverter.class)
     @JsonIgnore
-    private Map<String,Object> metadata;
+    private Map<String, Object> metadata;
 
     @Convert(converter = MapConverter.class)
     @Column(columnDefinition = "TEXT")

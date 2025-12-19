@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonModel
-public class EmailAddress  {
+public class EmailAddress {
 
     private String name;
     private String address;
@@ -38,11 +38,6 @@ public class EmailAddress  {
         return addresses.stream().map(EmailAddress::new).collect(Collectors.toList());
     }
 
-    @JsonIgnore
-    public boolean isValid() {
-        return EmailValidator.getInstance().isValid(address);
-    }
-
     public static boolean isValid(EmailAddress address) {
         return address != null && address.isValid();
     }
@@ -57,6 +52,11 @@ public class EmailAddress  {
             }
         }
         return true;
+    }
+
+    @JsonIgnore
+    public boolean isValid() {
+        return EmailValidator.getInstance().isValid(address);
     }
 
 }

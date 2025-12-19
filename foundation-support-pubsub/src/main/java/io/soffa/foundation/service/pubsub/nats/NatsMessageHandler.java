@@ -42,7 +42,7 @@ public class NatsMessageHandler implements MessageHandler {
 
         try {
             message = ObjectUtil.deserialize(msg.getData(), io.soffa.foundation.core.messages.Message.class);
-        }catch (Exception e) {
+        } catch (Exception e) {
             //TODO: handle lost payloads (audit)
             LOG.error(e, "Invalid payload, message will be discarded -- %s", e.getMessage());
             return;

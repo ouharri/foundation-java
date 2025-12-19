@@ -19,7 +19,7 @@ import java.util.Optional;
 
 @Aspect
 @Component
-public class SecurityAspect   {
+public class SecurityAspect {
 
     public static final int ORDER = -100;
 
@@ -33,7 +33,7 @@ public class SecurityAspect   {
     public void checkAuthenticated(JoinPoint point) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (!auth.isAuthenticated() || auth instanceof AnonymousAuthenticationToken) {
-            LOG.warn("Access denied to [%s.%s], current context does not contain an authentication",point.getSignature().getDeclaringTypeName(),point.getSignature().getName());
+            LOG.warn("Access denied to [%s.%s], current context does not contain an authentication", point.getSignature().getDeclaringTypeName(), point.getSignature().getName());
             throw ERR_AUTH_REQUIRED;
         }
     }
@@ -43,7 +43,7 @@ public class SecurityAspect   {
     public void checkApplication(JoinPoint point) {
         RequestContext context = getRequestContext().orElseThrow(() -> ERR_APP_REQUIRED);
         if (TextUtil.isEmpty(context.getApplicationName())) {
-            LOG.warn("Access denied to [%s.%s], current context does not contain a valid applicationName", point.getSignature().getDeclaringTypeName(),point.getSignature().getName());
+            LOG.warn("Access denied to [%s.%s], current context does not contain a valid applicationName", point.getSignature().getDeclaringTypeName(), point.getSignature().getName());
             throw ERR_APP_REQUIRED;
         }
     }

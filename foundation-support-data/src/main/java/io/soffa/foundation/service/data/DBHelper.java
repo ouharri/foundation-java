@@ -105,7 +105,7 @@ public final class DBHelper {
 
     private static void doApplyMigration(DatasourceInfo dsInfo, SpringLiquibase lqb, Map<String, String> changeLogParams) {
         @SuppressWarnings("PMD.CloseResource")
-        HikariDataSource ds = (HikariDataSource)dsInfo.getDataSource();
+        HikariDataSource ds = (HikariDataSource) dsInfo.getDataSource();
         String schema = ds.getSchema();
         if (TenantId.DEFAULT_VALUE.equals(dsInfo.getName())) {
             lqb.setContexts(TenantId.DEFAULT_VALUE);

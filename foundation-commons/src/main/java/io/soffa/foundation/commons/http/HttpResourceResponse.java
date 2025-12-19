@@ -7,8 +7,8 @@ import java.net.URL;
 
 public class HttpResourceResponse implements HttpResponseProvider {
 
-    private String contentType = "application/json";
     private final String location;
+    private String contentType = "application/json";
 
 
     @SneakyThrows

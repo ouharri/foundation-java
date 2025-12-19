@@ -16,7 +16,7 @@ public class PubSubClientConfig {
 
     private Map<String, String> options;
 
-    public void afterPropertiesSet(){
+    public void afterPropertiesSet() {
         if (addresses == null) {
             throw new ConfigurationException("addresses is required");
         }

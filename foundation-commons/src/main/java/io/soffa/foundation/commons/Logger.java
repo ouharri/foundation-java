@@ -38,12 +38,12 @@ public class Logger {
         if (current == null) {
             current = new HashMap<>();
         }
-        Map<String,String> backup = new HashMap<>(current);
+        Map<String, String> backup = new HashMap<>(current);
         try {
             current.putAll(context);
             setContext(current);
             return supplier.get();
-        }finally {
+        } finally {
             setContext(backup);
         }
     }

@@ -4,7 +4,6 @@ import lombok.SneakyThrows;
 import org.apache.commons.beanutils.BeanUtils;
 
 
-
 public final class BeanUtil {
 
     private BeanUtil() {

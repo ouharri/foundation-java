@@ -5,7 +5,7 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.function.Function;
 
-public interface PendingJobRepository  extends EntityRepository<PendingJob> {
+public interface PendingJobRepository extends EntityRepository<PendingJob> {
 
 
     default void create(@NonNull String operation, @NonNull String subject) {

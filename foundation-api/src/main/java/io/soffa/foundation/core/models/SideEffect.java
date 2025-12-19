@@ -18,7 +18,7 @@ public class SideEffect {
     private String subjet;
     private String event;
     private String error;
-    private Map<String,Object> metadata;
+    private Map<String, Object> metadata;
 
     public SideEffect(@NonNull String subjet, @NonNull String event) {
         this.subjet = subjet;

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Value;
 
 @Value
-public class TenantId   {
+public class TenantId {
 
     public static final String DEFAULT_VALUE = "default";
     public static final String INHERIT_VALUE = "inherit";
@@ -21,7 +21,7 @@ public class TenantId   {
     }
 
     public static TenantId of(String value) {
-        if (value==null || value.isEmpty()) {
+        if (value == null || value.isEmpty()) {
             return null;
         }
         return new TenantId(value);

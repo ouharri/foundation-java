@@ -4,7 +4,8 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 public final class DigestUtil {
 
-    private  DigestUtil() {}
+    private DigestUtil() {
+    }
 
     public static String md5(String value) {
         if (TextUtil.isEmpty(value)) {

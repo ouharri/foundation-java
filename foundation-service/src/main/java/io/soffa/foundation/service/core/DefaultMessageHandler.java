@@ -92,7 +92,7 @@ public class DefaultMessageHandler implements MessageHandler {
                     //noinspection unchecked
                     @SuppressWarnings("unchecked")
                     Object result = ((Operation<Object, Object>) operation).handle(payload.get(), context);
-                    if (result==null) {
+                    if (result == null) {
                         return Optional.empty();
                     }
                     return Optional.of(result);

@@ -14,7 +14,7 @@ public final class PubSubReadiness {
     private PubSubReadiness() {
     }
 
-    public static  void setReady() {
+    public static void setReady() {
         READY.set(true);
     }
 
